@@ -12,6 +12,14 @@ export const editCaseData = createCallbackData("edit-case-data", {
 export const editLootData = createCallbackData("edit-case-loot", {
   id: String,
 });
+export const addLootData = createCallbackData("add-case-loot", {
+  caseId: String,
+  itemId: String,
+});
+export const delateLootData = createCallbackData("delate-case-loot", {
+  caseId: String,
+  itemId: String,
+});
 export const editCaseLocaleData = createCallbackData("edit-case-locale", {
   id: String,
 });

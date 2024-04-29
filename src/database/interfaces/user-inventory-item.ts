@@ -2,12 +2,12 @@ import { ILocale } from "./locale.js";
 
 export const rarityChancesMap = new Map([
   [0, "ARMY"],
-  [72, "ARMY_ST"],
-  [80, "ILLEGAL"],
-  [94, "ILLEGAL_ST"],
-  [96, "CLASSIFIED"],
-  [99.4, "CLASSIFIED_ST"],
-  [99.95, "SECRET"],
+  [80, "ARMY_ST"],
+  [88, "ILLEGAL"],
+  [96.4, "ILLEGAL_ST"],
+  [98.576, "CLASSIFIED"],
+  [99.64, "CLASSIFIED_ST"],
+  [99.97, "SECRET"],
   [100, "SECRET_ST"],
 ]);
 

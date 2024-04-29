@@ -43,10 +43,18 @@ feature.callbackQuery(
   logHandle("keyboard-shoot-select"),
   async (ctx) => {
     if (ctx.database === undefined) {
-      ctx.reply(ctx.t("errors.no-registered-user"));
+      return ctx.reply(ctx.t("errors.no-registered-user"));
     }
-    shoot(ctx, ctx.database.user, ctx.database.inventory, ctx.database.stats);
+    if (ctx.database.user.status_id === -1) {
+      return ctx.answerCallbackQuery(ctx.t("errors.no-calibration-user"));
+    }
+    if (ctx.database.inventory.targets < 1) {
+      return ctx.answerCallbackQuery(ctx.t("shoot.no-targets"));
+    }
+    ctx.database.inventory.targets -= 1;
+    await ctx.database.inventory.save();
     ctx.answerCallbackQuery();
+    shoot(ctx, ctx.database.user, ctx.database.inventory, ctx.database.stats);
   },
 );
 

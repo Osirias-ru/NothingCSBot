@@ -183,14 +183,6 @@ export async function shoot(
   const user = userDatabase;
   const inventory = userInventory;
   const stats = userStats;
-  if (user.status_id === -1) {
-    ctx.reply(i18n.t(user.locate_code, "errors.no-calibration-user"));
-    return;
-  }
-  if (userInventory.targets < 1) {
-    ctx.reply(i18n.t(user.locate_code, "shoot.no-targets"));
-    return;
-  }
   const shootMessage = await ctx.reply(i18n.t(user.locate_code, "shoot.start"));
   const timerPromise = new Promise((resolve) => {
     setTimeout(resolve, 3000);
@@ -200,7 +192,6 @@ export async function shoot(
   const reward = shootReward[hitTarget];
 
   inventory.coins += reward;
-  inventory.targets -= 1;
   stats.earned += reward;
   stats.shoots += 1;
   if (hitTarget === 0) {

@@ -13,7 +13,10 @@ mongoose.set("strictQuery", true);
 
 export async function initializeMongoose(): Promise<true> {
   try {
-    await mongoose.connect(config.MONGO_DB);
+    await mongoose.connect(config.MONGO_DB, {
+      w: "majority",
+      wtimeoutMS: 5000,
+    });
     logger.info("Mongoose: Database connection established");
     return true;
   } catch (error) {
