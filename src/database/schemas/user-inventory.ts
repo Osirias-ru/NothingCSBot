@@ -12,13 +12,13 @@ const InventorySchema: Schema = new Schema({
   items: [{ type: String, required: true }],
 });
 
-/*InventorySchema.pre(
+/* InventorySchema.pre(
   "save",
   function psave(this: Document & IUserInventory, next) {
     cache.add(this._id, this);
     next();
   },
-);*/
+); */
 
 const Inventory = model<IUserInventory>("Inventory", InventorySchema);
 

@@ -39,7 +39,7 @@ feature.command("start", logHandle("command-start"), async (ctx) => {
 
 feature.callbackQuery(
   homeData.filter(),
-  logHandle("unhandled-callback-query"),
+  logHandle("home-callback-query"),
   async (ctx) => {
     if (ctx.database === undefined) {
       return ctx.answerCallbackQuery(ctx.t("errors.no-registered-user"));
